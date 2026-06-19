@@ -1,0 +1,180 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #060b10;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e0e0e0;
+}
+
+/* ── Wrapper ── */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px;
+}
+
+/* ── Title ── */
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #00e676;
+  text-shadow: 0 0 20px rgba(0, 230, 118, 0.5);
+  user-select: none;
+}
+
+/* ── Scoreboard ── */
+.scoreboard {
+  display: flex;
+  gap: 32px;
+}
+
+.score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.score-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #555f6b;
+}
+
+.score-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00e676;
+  min-width: 3ch;
+  text-align: center;
+}
+
+/* ── Canvas container ── */
+.canvas-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px #1a2530,
+    0 0 40px rgba(0, 230, 118, 0.12),
+    0 8px 32px rgba(0,0,0,0.6);
+}
+
+canvas {
+  display: block;
+  background: #0d1117;
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 11, 16, 0.82);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.2s;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+#overlay-msg {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #b0bec5;
+}
+
+#overlay-msg strong {
+  color: #00e676;
+  font-size: 1.3rem;
+}
+
+kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 5px;
+  border: 1px solid #37474f;
+  background: #1a2530;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #90a4ae;
+}
+
+/* ── Start button ── */
+#startBtn {
+  padding: 10px 36px;
+  border: none;
+  border-radius: 30px;
+  background: #00e676;
+  color: #060b10;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 0 20px rgba(0,230,118,0.35);
+}
+
+#startBtn:hover {
+  background: #69f0ae;
+  transform: scale(1.04);
+  box-shadow: 0 0 28px rgba(0,230,118,0.5);
+}
+
+#startBtn:active {
+  transform: scale(0.97);
+}
+
+/* ── D-pad (mobile controls) ── */
+.dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.dpad-row {
+  display: flex;
+  gap: 4px;
+}
+
+.dpad-btn {
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 10px;
+  background: #131f2b;
+  color: #00e676;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.1s, transform 0.1s;
+  touch-action: manipulation;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.dpad-btn:hover { background: #1c2e40; }
+.dpad-btn:active { transform: scale(0.92); background: #243748; }
+.dpad-btn.dpad-center { background: #0d1520; cursor: default; opacity: 0.4; }
+
+/* ── Responsive ── */
+@media (max-width: 460px) {
+  canvas { width: 320px !important; height: 320px !important; }
+  .title { font-size: 1.5rem; }
+}
